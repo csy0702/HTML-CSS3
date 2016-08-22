@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 400px;
+				height: 300px;
+				position: relative;
+				margin: 30px auto;
+				/*定义3d属性*/
+				-webkit-transform-style: preserve-3d;
+				/*设置视井  越小则看到的3d效果越明显*/
+				-webkit-perspective: 1000px;
+			}
+			img{
+				width: 400px;
+				height: 300px;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				-webkit-transform-origin: bottom;
+				-webkit-transition: 2s linear,top 1s;
+				-webkit-animation: move 0.3s linear infinite;
+			}
+			@-webkit-keyframes move{
+				from{top: 0px;left: 0px;}
+				to{top:-2px;left: -2px;}
+			}
+			img:hover{
+				-webkit-transform: rotateX(-360deg) ;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<img src="images/1.jpg" />
+		</div>
+		<script>
+			
+		</script>
+	</body>
+</html>

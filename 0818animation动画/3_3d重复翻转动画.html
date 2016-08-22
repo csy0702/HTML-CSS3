@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 400px;
+				height: 300px;
+				position: relative;
+				margin: 30px auto;
+				/*定义3d属性*/
+				-webkit-transform-style: preserve-3d;
+				/*设置视井  越小则看到的3d效果越明显*/
+				-webkit-perspective: 1000px;
+			}
+			img{
+				width: 400px;
+				height: 300px;
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				/*-webkit-transform-origin: bottom;*/
+				-webkit-animation:move 2s linear infinite ;
+				
+			}
+			@-webkit-keyframes move{
+				0%{
+					-webkit-transform:rotateY(0deg);
+					
+				}
+				25%{
+					-webkit-transform:rotateY(-120deg);
+					opacity: 0.5;
+				}
+				50%{
+					-webkit-transform:rotateY(-240deg);
+					opacity:0;
+				}
+				100%{
+					-webkit-transform:rotateY(-360deg);
+					
+				}
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<img src="images/3.jpg" />
+		</div>
+		<script>
+			
+		</script>
+	</body>
+</html>

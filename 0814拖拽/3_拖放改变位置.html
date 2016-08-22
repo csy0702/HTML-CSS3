@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		ul{
+			height: 300px;
+			margin: 10px;
+			background: lavender;
+		}
+		ul li{
+			background: blueviolet;
+			padding: 10px;
+			margin-bottom: 10px;
+			list-style: none;
+			color: white;
+		}
+	</style>
+	<body>
+		<ul id="a">
+			<li draggable="true">A</li>
+			<li draggable="true">B</li>
+			<li draggable="true">C</li>
+		</ul>
+		<ul id="b"></ul>
+	</body>
+	<script>
+		
+		
+		var b=document.getElementById("b");
+		var allli=document.getElementsByTagName("li");
+		var elementDragged;
+		for(var i=0;i<allli.length;i++){
+			allli[i].ondragstart=function(e){
+				e.dataTransfer.setData("text",this.innerHTML);
+				elementDragged=this;
+			}
+			allli[i].ondragend=function(e){
+				
+				elementDragged=null;
+			}
+		}
+		b.ondragover=function(e){
+			e.preventDefault();
+			e.dataTransfer.dropEffect="move";
+			
+		}
+		b.ondrop=function(e){
+			e.preventDefault();
+			var li=document.createElement("li");
+			li.draggable="true";
+			li.innerHTML=e.dataTransfer.getData("text");
+			b.appendChild(li);
+			document.getElementById("a").removeChild(elementDragged);
+			
+		}
+		
+		
+		
+	</script>
+</html>

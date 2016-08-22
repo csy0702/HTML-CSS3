@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		ul{
+			list-style: none;
+			padding: 0px;
+			margin: 0px;
+		}
+		li{
+			float: left;
+			width: 150px;
+			margin-left: 20px;
+			height: 30px;
+			text-align: center;
+			line-height: 30px;
+			background: pink;
+			/*由于这里把文字也斜切了，所以下面要对文字斜切回来*/
+			-webkit-transform: skewX(30deg);
+		}
+		a{
+			text-decoration: none;
+			-webkit-transform: skewX(-30deg);
+			display: block;
+		}
+	</style>
+	<body>
+		<ul>
+			<li><a href="">梦想总是要有的</a></li>
+			<li><a href="">万一有一天实现了呢</a></li>
+			<li><a href="">如果有一天</a></li>
+			
+		</ul>
+	</body>
+</html>

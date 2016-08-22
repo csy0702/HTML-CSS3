@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		#canvas1{
+			border: 1px solid palevioletred;
+		}
+		#canvas2{
+			border: 1px solid peachpuff;
+		}
+	</style>
+	<body>
+		<canvas id="canvas1" width="400" height="400">你的浏览器不支持HTML5</canvas>
+		<canvas id="canvas2" width="400" height="400">你的浏览器不支持HTML5</canvas>
+		<script>
+			//1.得到canvas对象
+			var canvas1=document.getElementById("canvas1");
+			var canvas2=document.getElementById("canvas2");
+			
+			//2.获得绘制对象，即绘制的是2d的图形
+			var context1=canvas1.getContext("2d");
+			var context2=canvas2.getContext("2d");
+			//填充
+			context1.fillStyle="rgba(244,120,9,0.7)";
+			context1.fillRect(50,50,200,200);
+			context1.fill();
+			
+			//画边框
+			context2.strokeStyle="rgba(30,140,0,1)";
+			context2.strokeRect(50,50,200,200);
+			context2.stroke();
+			
+			//设置文字的大小，颜色，居中
+			context2.font="58px 华文行楷";
+			context2.fillStyle="rgba(244,120,9,0.7)";
+			context2.textAlign="center";
+			//fillText(text,x,y);
+			context2.fillText("范皓",150,150);
+			context2.strokeText("范皓",150,150);
+		</script>
+	</body>
+</html>

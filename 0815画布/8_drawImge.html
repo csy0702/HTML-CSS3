@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" width="1000" height="1000">你的浏览器不支持该功能</canvas>
+		
+		<script>
+			var canvas=document.getElementById("canvas");
+			var context=canvas.getContext("2d");
+			
+			//创建一个Img对象
+			var newimg=new Image();
+			newimg.src="课堂内容/img/1a.jpg";
+			//创建的图片必须要放在实例的加载事件中
+			newimg.onload=function(){
+				//从(0,0)开始绘制这个图片
+				context.drawImage(newimg,0,0);
+				//从(400,400)开始绘制这个图片，宽高为100
+				context.drawImage(newimg,200,200,100,100);
+				//从(100,180)开始截取100个像素放到（600,600）来以200的像素来显示
+				context.drawImage(newimg,100,180,100,100,400,400,200,200);
+			}
+		</script>
+	</body>
+</html>

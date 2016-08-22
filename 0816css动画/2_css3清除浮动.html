@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		.div1{
+			float: left;
+			width: 200px;
+			height: 200px;
+			border: 1px solid red;
+		}
+		.div2{
+			float: left;
+			width: 200px;
+			height: 200px;
+			border: 1px solid lime;
+		}
+		.box{
+			border: 1px solid magenta;
+			zoom: 1;/*ie私有属性，清楚浮动，清除margin所引起的空间塌陷*/
+		}
+		/*目前主流的清除浮动*/
+		.box:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+	</style>
+	<body>
+		
+		<div class="box">
+			<div class="div1">虽然</div>
+			<div class="div2">但是</div>
+		</div>
+		<div class="box2">你清楚浮动让我下来啊</div>
+	</body>
+</html>

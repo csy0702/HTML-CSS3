@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" width="600" height="400">你的浏览器不支持该功能</canvas>
+		
+		<script>
+			var canvas=document.getElementById("canvas");
+			var context=canvas.getContext("2d");
+			//线性渐变区域    渐变开始位置和结束位置
+			var grd=context.createLinearGradient(100,120,400,400);
+			//定义颜色   0  开始颜色    1  结束颜色
+			grd.addColorStop(0,"red");
+			grd.addColorStop(0.5,"yellow");
+			grd.addColorStop(1,"blue");
+			
+			
+//			context.fillStyle=grd;
+//			context.fillRect(100,120,00,200);
+			
+			context.fillStyle=grd;
+			context.font="100px 华文行楷"
+			context.fillText("今天",100,120);
+			
+		</script>
+	</body>
+</html>

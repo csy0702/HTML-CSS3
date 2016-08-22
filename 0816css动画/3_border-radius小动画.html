@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		.box{
+			width: 400px;
+			height: 400px;
+			margin: 50px auto;
+			transition: 1s linear;
+			-webkit-transition: 1s linear;
+		}
+		.box div{
+			width: 150px;
+			height: 150px;
+			float: left;
+			margin:5px;
+		}
+		.div1{
+			border-radius: 0% 80%;
+			background: palevioletred;
+		}
+		.div2{
+			border-radius: 80% 0%;
+			background: lime;
+		}
+		.div3{
+			border-radius: 80% 0%;
+			background: blue;
+		}
+		.div4{
+			border-radius: 0% 80%;
+			background: magenta;
+		}
+		.box:hover{
+			transform: rotate(900deg);
+			-webkit-transform: rotate(900deg);
+		}
+	</style>
+	<body>
+		<div class="box">
+			<div class="div1"></div>
+			<div class="div2"></div>
+			<div class="div3"></div>
+			<div class="div4"></div>
+		</div>
+		
+	</body>
+</html>

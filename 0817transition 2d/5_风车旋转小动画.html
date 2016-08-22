@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="lib.js"></script>
+	</head>
+	<style>
+		.box{
+			width: 400px;
+			height: 400px;
+			margin: 50px auto;
+			transition: 2s linear;
+			-webkit-transition: 2s linear;
+			-webkit-transform-origin: center center ;/*旋转中心点  旋转基点*/
+		}
+		.box div{
+			width: 150px;
+			height: 150px;
+			float: left;
+			margin:5px;
+		}
+		.div1{
+			border-radius: 0% 80%;
+			background: palevioletred;
+		}
+		.div2{
+			border-radius: 80% 0%;
+			background: lime;
+		}
+		.div3{
+			border-radius: 80% 0%;
+			background: blue;
+		}
+		.div4{
+			border-radius: 0% 80%;
+			background: magenta;
+		}
+		
+	</style>
+	<body>
+		<div class="box">
+			<div class="div1"></div>
+			<div class="div2"></div>
+			<div class="div3"></div>
+			<div class="div4"></div>
+		</div>
+		<script>
+			var box=document.getElementsByClassName("box")[0];
+			var i=1;
+			box.onclick=function(){
+				this.style.transform="rotate(360deg)";
+				addEnd(box,end);
+			}
+			//addEnd()过渡了多少属性，出发了多少次.
+			function addEnd(obj,fn){
+				obj.addEventListener("webkitTransitionEnd",fn,false);/*兼容谷歌*/
+				obj.addEventListener("transitionEnd",fn,false);/*兼容火狐*/
+			}
+			function end(){
+					i++;
+					this.style.transform="rotate("+360*i+"deg)";
+				//removeEnd(this,end);
+			}
+			
+			
+
+		</script>
+	</body>
+</html>

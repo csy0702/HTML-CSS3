@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		body{
+			background: #f9f9f9;
+		}
+		#memu{
+			width: 50px;
+			height: 50px;
+			position: fixed;
+			left: 50%;
+			top: 50%;
+			
+		}
+		#memu_list{
+			position: relative;
+			width: 42px;
+			height: 42px;
+		}
+		#memu_list img{
+			position: absolute;
+			left:0px;
+			top:0px;
+		}
+		#home{
+			width: 50px;
+			height: 50px;
+			background: url(images/home.png) no-repeat;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			-webkit-transition: 1s;
+			
+		}
+	</style>
+	<body>
+		<div id="memu">
+			<div id="memu_list">
+				<img src="images/clos.png" />
+				<img src="images/full.png" />
+				<img src="images/open.png" />
+				<img src="images/prev.png" />
+				<img src="images/refresh.png" />
+			</div>
+			<div id="home"></div>
+		</div>
+		<script>
+			var home=document.getElementById("home");
+			var imgs=document.getElementById("memu_list").getElementsByTagName("img");
+			var raduis=150;
+			var flag=true;
+			//点击旋转
+			home.onclick=function(){
+				if(flag){
+					this.style.webkitTransform="rotate(360deg)";
+					//给每一个图片添加飞行的路径
+					for(var i=0;i<imgs.length;i++){//过渡完成的时间   延迟
+						imgs[i].style.webkitTransition="0.5s "+0.1*(i+1)+"s";
+						//开始计算距离
+						var olt=ToLT(raduis,90/4*i);
+						imgs[i].style.left=olt.l+"px";
+						imgs[i].style.top=olt.t+"px";
+						imgs[i].style.webkitTransform="rotate(720deg)";
+					}
+					
+				}else{
+					this.style.webkitTransform="rotate(0deg)";
+					//收回去
+					for(var i=0;i<imgs.length;i++){//过渡完成的时间
+						imgs[i].style.webkitTransition="0.5s "+0.1*(i+1)+"s";
+						imgs[i].style.left="";
+						imgs[i].style.top="";
+						imgs[i].style.webkitTransform="rotate(0deg)";
+					}
+					
+				}
+				flag=!flag;
+			}
+			
+			//已知斜边和角度，求直角边，用sin和cos
+			function ToLT(radius,deg){
+				var oleft=Math.round(Math.sin(deg/180*Math.PI)*radius);
+				var otop=Math.round(Math.cos(deg/180*Math.PI)*radius);
+				return {l:oleft,t:otop};
+				
+			}
+		</script>
+	</body>
+</html>

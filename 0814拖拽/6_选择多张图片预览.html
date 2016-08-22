@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		ul li{
+			width: 300px;
+			height: 300px;
+			margin-top: 10px;
+			border: 5px dashed palevioletred;
+			list-style: none;
+			float: left;
+		}
+		ul li img{
+			width: 300px;
+			height: 300px;
+		}
+	</style>
+	<body>
+		
+		请选择文件:<input type="file" id="file" accept="image/*" multiple/><br />
+		<input type="button" value="读取为文本" onclick="ReadAs('text')" /><br />
+		<input type="button" value="读取为二进制" onclick="ReadAs('BineryString')" /><br />
+		<input type="button" value="读取为数组缓存区" onclick="ReadAs('ArrayBuffer')" /><br />
+		<input type="button" value="读取为url" onclick="ReadAs('DataURL')" /><br />
+		<ul id="msg"></ul>
+		
+		<script>
+		
+		//FileReader实例化对象 new 
+			function ReadAs(type){
+				//先得到文件
+				var files=document.getElementById("file").files;
+				for(var i=0;i<files.length;i++){
+					
+				 	if(files){
+					//实例化FileReader()对象    readAsText   readAsBineryString  readAsArrayBuffer
+					var reader=new FileReader();
+						switch(type){
+							case "text":
+							reader.readAsText(files[i]);
+							break;
+							case "BineryString":
+							reader.readAsBineryString(files[i]);
+							break;
+							case "ArrayBuffer":
+							reader.readAsArrayBuffer(files[i]);
+							break;
+							case "DataURL":
+							reader.readAsDataURL(files[i]);   
+							break;
+						}
+					}
+					//存放选择的文件
+					reader.onload=function(){
+						var result=this.result;
+						if(type=="DataURL"){
+							var msg=document.getElementById("msg");
+							var li=document.createElement("li");
+							li.innerHTML+="<img src='"+result+"' />";
+							msg.appendChild(li);
+						}else{
+							var msg=document.getElementById("msg");
+							var li=document.createElement("li");
+							li.innerHTML+=result;
+							msg.appendChild(li);
+						}
+					}
+				}
+				
+				
+			}
+		</script>
+	</body>
+</html>

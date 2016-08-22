@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		div{
+			width: 400px;
+			height: 400px;
+			background: purple;
+			-webkit-transition: background-color 20s,width 2s 2s,height 2s 4s;
+		}
+		/*如果将过渡直接设在伪类中的话，只要鼠标移开，那么过渡马上就会消失了，所以不要放在伪类中*/
+		div:hover{
+			width: 600px;
+			height: 600px;
+			background-color: lime;
+			
+		}
+	</style>
+	<body>
+		<div></div>
+	</body>
+</html>

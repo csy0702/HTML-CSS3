@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="图片拖放/lib.js"></script>
+	</head>
+	<style>
+	#dropbox{
+		width:800px;
+		height: 100px;
+		background: papayawhip;
+		text-align: center;
+		font-size: 30px;
+	}
+	ul{
+		background: paleturquoise;
+		width:800px;
+		height: 500px;
+	}
+	ul li{
+		width: 200px;
+		height: 200px;
+		margin-top: 10px;
+		border: 2px dashed palevioletred;
+		list-style: none;
+		float: left;
+		overflow: hidden;
+	}
+	ul li img{
+		width: 300px;
+		height: 300px;
+	}
+	</style>
+	<body>
+		
+		<div id="dropbox" draggable="true">将文件拖到此区域 </div>  
+    	<ul id="filecontent" draggable="true"></ul>  
+    <script>  
+      var dropbox = document.getElementById("dropbox"); 
+      //拖离
+      document.addEventListener("dragleave", function(e){
+      	yc.stopEvent(e);
+      }, false);
+      //拖进
+      document.addEventListener("dragenter", function(e){
+      	yc.stopEvent(e);
+      }, false);
+      //拖来拖去
+       document.addEventListener("dragover", function(e){
+      	yc.stopEvent(e);
+      }, false);
+      //拖后放
+      document.addEventListener("drop", function(e){
+      	yc.stopEvent(e); 
+      }, false);
+  	
+    
+    var box = document.getElementById('dropbox'); //拖拽区域 
+    box.addEventListener("drop",function(e){ 
+        yc.stopEvent(e); //取消默认浏览器拖拽效果 
+        var files = e.dataTransfer.files; //获取文件对象 
+        //检测是否是拖拽文件到页面的操作 
+        if(files.length == 0){return false;} 
+        for(var i=0;i<files.length;i++){
+        
+        	var f=files[i];
+        	
+			if(files){
+				//实例化FileReader()对象    readAsText   readAsBineryString  readAsArrayBuffer
+				//循环一次就要创建一个实例，每个实例是不一样的
+				var reader=new FileReader();
+				//alert(files[i].type);
+				switch(files[i].type){
+					case "text/plain":
+					reader.readAsText(files[i]);
+					break;
+					case "BineryString":
+					reader.readAsBineryString(files[i]);
+					break;
+					case "ArrayBuffer":
+					reader.readAsArrayBuffer(files[i]);
+					break;
+					case "image/jpeg":
+					reader.readAsDataURL(files[i]);   
+					break;
+				}
+			}
+			//存放选择的文件
+			reader.onload=function(){
+				var result=this.result;
+				if(/image\/\w+/.test(f.type) ){
+					var filecontent=document.getElementById("filecontent");
+					var li=document.createElement("li");
+					li.innerHTML+="<img src='"+result+"' />";
+					filecontent.appendChild(li);
+				}else{
+					var filecontent=document.getElementById("filecontent");
+					var li=document.createElement("li");
+					li.innerHTML+=result;
+					filecontent.appendChild(li);
+				}
+			}
+		}
+    },false); 
+    
+    
+    
+    
+    
+    
+    
+    </script>  
+	</body>
+</html>

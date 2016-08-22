@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		#canvas1{
+			width: 400px;
+			height: 400px;
+			border: 1px solid palevioletred;
+		}
+		#canvas2{
+			border: 1px solid peachpuff;
+		}
+	</style>
+	<body>
+		<canvas id="canvas1">你的浏览器不支持HTML5</canvas>
+		<canvas id="canvas2" width="400" height="400">你的浏览器不支持HTML5</canvas>
+		<script>
+			//1.得到canvas对象
+			var canvas1=document.getElementById("canvas1");
+			var canvas2=document.getElementById("canvas2");
+			//设置画布的大小  可以在标签中设置，也可以使用js来添加静态成员属性，但是不可以在css样式中设置，否则没有用，会使用默认的画布大小
+			canvas2.width=500;
+			canvas2.height=500;
+			
+			//2.获得绘制对象，即绘制的是2d的图形
+			var context1=canvas1.getContext("2d");
+			var context2=canvas2.getContext("2d");
+			
+			//3.开始绘制
+			//fillstyle=""  填充颜色
+			//fillRect(x,y,width,height);
+			//fill()填充
+			context1.fillStyle="pink";
+			context1.fillRect(0,0,200,200);
+			context1.fill();
+			
+			context2.fillStyle="red";
+			context2.fillRect(0,0,200,200);
+			context2.fill();
+		</script>
+	</body>
+</html>

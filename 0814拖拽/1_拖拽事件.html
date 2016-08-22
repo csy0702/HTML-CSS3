@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+			background: limegreen;
+		}
+		p{
+			width: 200px;
+			height: 200px;
+			background: lightblue;
+			margin-left: 400px;
+		}
+	</style>
+	<body>
+		<div draggable="true" id="mydiv">拖放元素</div>
+		<p id="myp">目标元素</p>
+		<script>
+		//拖放元素和目标元素可以是同一个
+			var mydiv=document.getElementById("mydiv");
+			var myp=document.getElementById("myp");
+			
+			//开始拖放   只能触发一次
+			mydiv.addEventListener("dragstart",function(){
+				console.log("开始拖放");
+			},false);
+			//正在拖放
+			mydiv.addEventListener("drag",function(){
+				console.log("正在拖放中");
+			},false);
+//			//被拖放的元素或者是从文件系统中选中的文件，拖放落下的时候触发
+//			mydiv.addEventListener("drog",function(){
+//				console.log("正在拖放中");
+//			},false);
+			mydiv.addEventListener("dragend",function(){
+				console.log("拖放结束");
+			},false);
+			
+			myp.addEventListener("dragenter",function(){
+				console.log("拖放进入目标元素");
+			},false);
+			myp.addEventListener("dragleave",function(){
+				console.log("拖放离开目标元素");
+			},false);
+			myp.addEventListener("dragover",function(){
+				console.log("拖放元素停留在目标元素中");
+			},false);
+		</script>
+	</body>
+</html>

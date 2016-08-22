@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		body{
+			background: #000000;
+			text-align: center;
+		}
+		h1{
+			display: inline-block;
+			font-size: 200px;
+			color: rgba(255,255,255,0.3);
+			background: -webkit-linear-gradient(-30deg,rgba(255,255,255,0) 100px,rgba(255,255,255,1) 180px,rgba(255,255,255,1) 240px,rgba(255,255,255,0) 300px) 40px 0 no-repeat;
+			-webkit-background-clip: text;
+			
+		}
+		   
+	</style>
+	<body>
+		<h1 id="h1">welcome</h1>
+		<script>
+			var h1=document.getElementById("h1");
+			var ileft=-300;
+			var time=null;
+			function move(){
+				time=window.setInterval(function(){
+					ileft+=10;
+					if(ileft==1000){
+						ileft=-300;
+					}
+					h1.style.backgroundPosition=ileft+"px 0px";
+				},20)
+				
+			}
+			
+			move();
+		</script>
+	</body>
+</html>

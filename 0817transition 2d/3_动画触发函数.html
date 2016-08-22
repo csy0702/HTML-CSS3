@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background: pink;
+			transition: 1s;
+		}
+	</style>
+	<body>
+		<div class="box">1111</div>
+		<script>
+			var box=document.getElementsByClassName("box")[0];
+			box.onclick=function(){//点击第一次要进行的操作，执行完之后调用addEnd()函数，为这个元素再添加动画特有的事件，再调用end()函数
+				this.style.width=this.offsetWidth+100+"px";
+				this.style.height=this.offsetHeight+100+"px";
+				addEnd(box,end);
+			}
+			function end(){
+				this.style.width=this.offsetWidth+100+"px";
+				removeEnd(this,end);
+			}
+			
+			
+			//addEnd()过渡了多少属性，出发了多少次.
+			function addEnd(obj,fn){
+				obj.addEventListener("webkitTransitionEnd",fn,false);/*兼容谷歌*/
+				obj.addEventListener("transitionEnd",fn,false);/*兼容火狐*/
+			}
+			function removeEnd(obj,fn){
+				obj.removeEventListener("webkitTransitionEnd",fn,false);
+				obj.removeEventListener("transitionEnd",fn,false);
+			}
+		</script>
+	</body>
+</html>

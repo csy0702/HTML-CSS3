@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" width="400" height="400">你的浏览器不支持该功能</canvas>
+		
+		<script>
+			var canvas=document.getElementById("canvas");
+			var context=canvas.getContext("2d");
+			
+			context.fillStyle="red";
+			context.save();
+			context.fillStyle="green";
+			context.save();
+			context.fillStyle="blanchedalmond";
+			context.fillRect(0,0,50,50);
+			context.restore();
+			context.fillRect(100,0,50,50);
+			context.restore();
+			context.fillRect(200,0,50,50);
+			
+		</script>
+	</body>
+</html>

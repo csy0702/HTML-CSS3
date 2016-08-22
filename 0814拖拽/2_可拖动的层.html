@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		#box{
+			position: absolute;
+			left: 300px;
+			top: 200px;
+			font-size: 12px;
+			background: pink;
+			padding: 5px;
+			box-shadow: 2px 2px 4px red;
+			-ms-box-shadow: 2px 2px 4px red;
+			
+		}
+		#content{
+			border: 1px solid aliceblue;
+		}
+		#top{
+			width: 425px;
+			line-height: 25px;
+			cursor: move;
+			background: azure;
+			border-bottom: 1px solid bisque;
+			padding-left: 5px;			
+		}
+		#close{
+			color: red;
+			font-size: 28px;
+			font-weight: bold;
+			float: right;
+			position: absolute;
+			top: 2px;
+			right: 8px;
+			cursor: pointer;
+			
+		}
+		#bottom{
+			width: 420px;
+			height: 250px;
+			padding: 10px 5px;
+		}
+	</style>
+	<body>
+		<div id="box" >
+			<div id="content" >
+				<div id="top" draggable="true">
+					可拖拽
+					<span id="close" >x</span>
+				</div>
+				<div id="bottom">
+					好好学习，天天向上
+				</div>
+			</div>
+		</div>
+		<script>
+			var otop=document.getElementById("top")
+			otop.addEventListener("drag",function(event){
+				var obox=document.getElementById("box");
+				var myx=event.clientX;
+				var myy=event.clientY;
+				if(myx==0){
+					return;
+				}
+				obox.style.left=event.clientX+"px";
+				obox.style.top=event.clientY+"px";
+			},false);
+			
+			document.getElementById("close").onclick=function(){
+				document.getElementById("box").style.display="none";
+			}
+		</script>
+	</body>
+</html>

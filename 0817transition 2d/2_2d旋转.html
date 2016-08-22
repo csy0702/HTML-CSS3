@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		body{
+			height: 400px;
+			border: 1px solid red;
+		}
+		
+		.box{
+			width: 100px;
+			height: 100px;
+			background: lawngreen;
+			-webkit-transition: 3s;
+			-webkit-transform-origin: right bottom ;/*旋转中心点  旋转基点*/
+		}
+		/*body:hover .box  等同于下面的写法*/
+		.box:hover{
+			-webkit-transform: rotate(360deg);
+		}
+	</style>
+	<body>
+		<div class="box">111</div>
+		
+	</body>
+</html>

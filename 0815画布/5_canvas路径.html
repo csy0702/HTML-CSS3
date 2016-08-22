@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="canvas" width="400" height="400">你的浏览器不支持画布</canvas>
+		<script>
+			var canvas=document.getElementById("canvas");
+			var context=canvas.getContext("2d");
+			//一旦使用了context.stroke()  就说明已经画上去了，不能再覆盖了
+			//定义绘制路径  beginPath()必须加，如果没有指定beginPath那么之后的beginPath就会覆盖前面画的东西
+			context.moveTo(20,20);
+			context.lineTo(120,20);
+			context.lineTo(20,120);
+			context.beginPath();
+			context.moveTo(140,220);
+			context.lineTo(220,260);
+			context.lineTo(260,120);
+			context.closePath();
+			context.fillStyle="red";
+			
+			context.fill();
+		</script>
+	</body>
+</html>
